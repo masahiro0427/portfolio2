@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages - sample-pro</title>
+    <link rel="stylesheet" href="program.css">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+<body>
+    <section class="menu" id="menu">
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <!--ここからメニュー-->
+            <div class="menu-content">
+                <ul><h4><a href="https://masahiro0427.github.io/web-design_practice/index.html">プロフィール</a></h4></ul>
+                <ul><h4><a href="https://masahiro0427.github.io/web-design_practice/index.html">履歴</a></h4></ul>
+                <ul class="menu2">
+                    <h4>ポートフォリオ一覧</h4>
+                    <h5><a href="https://masahiro0427.github.io/web-design_practice/program.html">ープログラミング作品</a></h5>
+                    <h5>美術関係作品(Coming Soon)</h5>
+                    <h5><a href="https://masahiro0427.github.io/web-design_practice/CG.html">ーCG作品</a></h5>
+                    <h5><a href="https://masahiro0427.github.io/web-design_practice/sikaku.html">合格した資格一覧</a></h5>
+                </ul>
+            </div>
+            <!--ここまでメニュー-->
+        </div>   
+    </section>
+    <section class="puro">
+        <div>
+            <img src="../web-design_practice/img/pro.jpeg" alt="" class="img">
+        </div>
+        <div>
+            <p>数字と画像を入力すると作業出力してくれる</p>
+            <h1>プログラミング</h1>
+            <p>ここはプログラミングの作品一覧が掲載されています。<br>（今回はチャレンジ課題のみ掲載）</p>
+        </div>
+    </section>
+    <section class="rinkh">
+        <h2>作品一覧</h2>
+        <div class="scloor">
+            <ul class="ul2">
+                <ul>
+                    <h3>チャレンジ2-1</h3>
+                    <p class="scloor2">
+                        #include &lt;iostream><br>
+                        // OpenCV用のヘッダファイル<br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //画像ファイル (サイズは小さめが良い)<br>
+                        #define FILE_NAME "./aquarium.jpg"<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            int x,y;<br>
+                            //画像の入力<br>
+                            cv::Mat src_img = cv::imread(FILE_NAME); //画像の読み込み<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "読み込み失敗\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            <br>
+                            cv::Mat dst_img = cv::Mat(src_img.size(),CV_8UC3); //画像の表示<br>
+                            for(y=0;y&lt;src_img.rows;y++){<br>
+                                for(x=0;x&lt;src_img.cols;x++){<br>
+                                    cv::Vec3b s=src_img.at&lt;cv::Vec3b>(y,x);<br>
+                                    if(s[0]>=100){<br>
+                                        s[0]=0;<br>
+                                        s[1]=0;<br>
+                                        s[2]=0;<br>
+                                    }else{<br>
+                                        s[0]=s[0];<br>
+                                        s[1]=s[1];<br>
+                                        s[2]=s[2];<br>
+                                    }<br>
+                                    dst_img.at&lt;cv::Vec3b>(y,x)=s;<br>
+                                }<br>
+                            }<br>
+                            cv::imshow(WINDOW_NAME_INPUT,src_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT,dst_img);<br>
+                            cv::waitKey(); //キー入力待ち (止める)<br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                    </p>
+                </ul>
+            </ul>
+            <ul class="ul3">
+                <ul>
+                    <h3>チャレンジ２−２</h3>
+                    <p class="scloor2 left">
+                        #include &lt;iostream><br>
+                        // OpenCV用のヘッダファイル<br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //画像ファイル (サイズは小さめが良い)<br>
+                        #define FILE_NAME "./aquarium.jpg"<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            int x,y,c=0,z=0;<br>
+                            //画像の入力<br>
+                            cv::Mat src_img = cv::imread(FILE_NAME); //画像の読み込み<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "読み込み失敗\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            <br>
+                            cv::Mat dst_img = cv::Mat(src_img.size(),CV_8UC3); //画像の表示<br>
+                            for(y=0;y&lt;src_img.rows;y++){<br>
+                                for(x=0;x&lt;src_img.cols;x++){<br>
+                                    cv::Vec3b s=src_img.at&lt;cv::Vec3b>(y,x);<br>
+                                    if(s[0]>=100){<br>
+                                        c++;<br>
+                                    }<br>
+                                    z++;<br>
+                                    dst_img.at&lt;cv::Vec3b>(y,x)=s;<br>
+                                }<br>
+                            }<br>
+                            printf("%f\n",(double)c/z*100);<br>
+                            cv::waitKey(1); //キー入力待ち (止める)<br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                        </p>
+                </ul>
+            </ul>
+            <ul class="ul2">
+                <ul>
+                    <h3>チャレンジ３</h3>
+                    <p class="scloor2">#include &lt;iostream><br>
+                        // OpenCV用のヘッダファイル<br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //画像ファイル (サイズは小さめが良い)<br>
+                        /*#define FILE_NAME "../Debug/shell.jpg"*/<br>
+                        #define FILE_NAME "../Debug/03_02_input_x21047.jpg"<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        #define COLOR_NUM (256)<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            //画像の入力<br>
+                            cv::Mat src_img = cv::imread(FILE_NAME,cv::IMREAD_GRAYSCALE); //画像の読み込み<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "Cannot read image file: %s.\n",FILE_NAME);<br>
+                                return (-1);<br>
+                            }<br>
+                            cv::Mat dst_img = cv::Mat(src_img.size(),CV_8UC3);<br>
+                            for(int y=0;y&lt;src_img.rows;y++){<br>
+                                for(int x=0;x&lt;src_img.cols;x++){<br>
+                                    uchar lut = src_img.at&lt;uchar>(y,x);<br>
+                                    cv::Vec3b s;<br>
+                                    if(lut>=0&&lut&lt;64){<br>
+                                        s[0]=255;<br>
+                                        s[1]=(lut*4);<br>
+                                        s[2]=0;<br>
+                                    }else if(lut>=64&&lut&lt;128){<br>
+                                        s[0]=255-((lut-64)*4);<br>
+                                        s[1]=255;<br>
+                                        s[2]=0;<br>
+                                    }else if(lut>=128&&lut&lt;192){<br>
+                                        s[0]=0;<br>
+                                        s[1]=255;<br>
+                                        s[2]=((lut-128)*4);<br>
+                                    }else if(lut>=192&&lut&lt;255){<br>
+                                        s[0]=0;<br>
+                                        s[1]=255-((lut-192)*4);<br>
+                                        s[2]=255;<br>
+                                    }else{<br>
+                                        s[0]=0;<br>
+                                        s[1]=0;<br>
+                                        s[2]=255;<br>
+                                    }<br>
+                                    dst_img.at&lt;cv::Vec3b>(y,x)=s;<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            cv::imshow(WINDOW_NAME_INPUT,src_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT,dst_img);<br>
+                            <br>
+                            cv::waitKey();<br>
+                            return 0;<br>
+                        }<br>
+                        </p>
+                </ul>
+            </ul>
+            <ul class="ul3">
+                <ul>
+                    <h3>チャレンジ５</h3>
+                    <p class="scloor2 left">
+                        #include &lt;iostream><br>
+                        // OpenCV用のヘッダファイル<br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        #define FILE_NAME "../Debug/dot_gray_rectangle.jpg"<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        #define COLOR_NUM (256)<br>
+                        #define FILTER_SIZE (15)<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            //画像の入力<br>
+                            cv::Mat src_img = cv::imread(FILE_NAME,0); //画像の読み込み<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "File is not opened.\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            cv::Mat dst_img;<br>
+                            <br>
+                            int F=FILTER_SIZE*FILTER_SIZE;<br>
+                            <br>
+                            double filter_h[F];<br>
+                            <br>
+                            for(int i=0;i&lt;F;i++){<br>
+                                filter_h[i]=1./49.;<br>
+                            }<br>
+                            <br>
+                            //配列をフィルタ行列kernelに変換<br>
+                            cv::Mat kernel=cv::Mat(FILTER_SIZE,FILTER_SIZE,CV_32F,filter_h);<br>
+                            //正規化<br>
+                            cv::normalize(kernel,kernel,1.0,0.0,cv::NORM_L1);<br>
+                            //フィルタの計算<br>
+                            cv::filter2D(src_img,dst_img,-1,kernel);<br>
+                            <br>
+                            int i,x,y;<br>
+                            /*int hist[COLOR_NUM];<br>
+                            <br>
+                            for(i=0;i&lt;COLOR_NUM;i++){<br>
+                                hist[i]=0;<br>
+                            }<br>
+                            <br>
+                            for(y=0;y&lt;dst_img.rows;y++){<br>
+                                for(x=0;x&lt;dst_img.cols;x++){<br>
+                                    unsigned char s=dst_img.at&lt;unsigned char>(y,x);<br>
+                                    hist[(int)s]++;<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            for(i=0;i&lt;COLOR_NUM;i++){<br>
+                                printf("%d=%d\n",i,hist[i]);<br>
+                            }*/<br>
+                            <br>
+                            uchar lut[COLOR_NUM];<br>
+                            for(int i=0;&lt;COLOR_NUM;i++){<br>
+                                if(i&lt;=64){<br>
+                                    lut[i]=255;<br>
+                                }else{<br>
+                                    lut[i]=0;<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            for(int y=0;y&lt;dst_img.rows;y++){<br>
+                                for(int x=0;x&lt;dst_img.cols;x++){<br>
+                                    uchar s=dst_img.at&lt;uchar>(y,x);<br>
+                                    dst_img.at&lt;uchar>(y,x)=lut[s];<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            cv::imshow(WINDOW_NAME_INPUT,src_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT,dst_img);<br>
+                            <br>
+                            cv::waitKey();<br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                    </p>
+                </ul>
+            </ul>
+            <ul class="ul2">
+                <ul>
+                    <h3>チャレンジ６</h3>
+                    <p class="scloor2">
+                        #include &lt;iostream><br>
+                        // OpenCV用のヘッダファイル<br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //画像ファイル (サイズは小さめが良い)<br>
+                        #define FILE_NAME "../Debug/06_02_input_x21047.jpg"<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        //#define WINDOW_NAME_OUTPUT1 "output1"<br>
+                        //#define WINDOW_NAME_OUTPUT2 "output2"<br>
+                        #define COLOR_NUM (256)<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            //画像の入力<br>
+                            cv::Mat src_img = cv::imread(FILE_NAME,cv::IMREAD_GRAYSCALE); //画像の読み込み<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "File is not opened.\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            cv::Mat dst_img;<br>
+                            cv::Mat H_img;<br>
+                            cv::Mat V_img;<br>
+                            //cv::Mat B_img;<br>
+                            //cv::Mat C_img;<br>
+                            cv::Mat tmp_img;<br>
+                            //フィルタa<br>
+                            double filter_h[]= {0.,0.,0.,<br>
+                                                -1.,0.,1.,<br>
+                                                0.,0.,0.};<br>
+                            //配列をフィルタ行列kernelに変換<br>
+                            cv::Mat kernel1=cv::Mat(3,3,CV_64FC1,filter_h);<br>
+                            //正規化<br>
+                            cv::normalize(kernel1,kernel1,1.0,0.0,cv::NORM_L1);<br>
+                            //フィルタの計算<br>
+                            <br>
+                            cv::filter2D(src_img,H_img,CV_64FC1,kernel1);<br>
+                            <br>
+                            //cv::convertScaleAbs(H_img,B_img);<br>
+                            <br>
+                            double filter_j[]= {0.,-1.,0.,<br>
+                                                0.,0.,0.,<br>
+                                                0.,1.,0.};<br>
+                            //配列をフィルタ行列kernelに変換<br>
+                            cv::Mat kernel2=cv::Mat(3,3,CV_64FC1,filter_j);<br>
+                            //正規化<br>
+                            cv::normalize(kernel2,kernel2,1.0,0.0,cv::NORM_L1);<br>
+                            //フィルタの計算<br>
+                            <br>
+                            cv::filter2D(src_img,V_img,CV_64FC1,kernel2);<br>
+                            <br>
+                            //cv::convertScaleAbs(V_img,C_img);<br>
+                            <br>
+                            cv::Mat G_img=cv::Mat(V_img.size(),CV_64FC1);<br>
+                            double h,v;<br>
+                            int x,y;<br>
+                            <br>
+                            for(y=0;y&lt;src_img.rows;y++){<br>
+                                for(x=0;x&lt;src_img.cols;x++){<br>
+                                    h=H_img.at&lt;double_t>(y,x);<br>
+                                    v=V_img.at&lt;double_t>(y,x);<br>
+                                    uchar s=sqrt(h*h+v*v);<br>
+                                    G_img.at&lt;double_t>(y,x)=s;<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            cv::convertScaleAbs(G_img,dst_img);<br>
+                            <br>
+                            cv::imshow(WINDOW_NAME_INPUT,src_img);<br>
+                            //cv::imshow(WINDOW_NAME_OUTPUT1,B_img);<br>
+                            //cv::imshow(WINDOW_NAME_OUTPUT2,C_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT,dst_img);<br>
+                            <br>
+                            cv::waitKey();<br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                        </p>
+                </ul>
+            </ul>
+            <ul class="ul3">
+                <ul>
+                    <h3>チャレンジ８</h3>
+                    <p class="scloor2 left">
+                        #include &lt;iostream><br>
+                        // OpenCV用のヘッダファイル<br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //画像ファイル (サイズは小さめが良い)<br>
+                        #define FILE_NAME "../Debug/red_green_rectangle.jpg"<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT1 "output1"<br>
+                        #define WINDOW_NAME_OUTPUT2 "output2"<br>
+                        #define THRESHOLD (156)<br>
+                        #define THRESHOLD1 (136)<br>
+                        #define THRESHOLD2 (100)<br>
+                        #define FILER_SIZE (3)<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            //画像の入力<br>
+                            cv::Mat src_img = cv::imread(FILE_NAME);<br>
+                            if (src_img.empty() || src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "File is not opened.\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            //画像の置き場所設定<br>
+                            cv::Mat result_img = cv::Mat(src_img.size(),CV_8UC1);<br>
+                            cv::Mat sub_img = cv::Mat(src_img.size(),CV_8UC1);<br>
+                            int x,y;<br>
+                            //メディアンフォルダ設定<br>
+                            cv::Mat median_img;<br>
+                            cv::medianBlur(src_img,median_img,FILER_SIZE);<br>
+                            //画像から特定の色の摘出<br>
+                            for(y=0;y&lt;median_img.rows;y++){<br>
+                                for(x=0;x&lt;median_img.cols;x++){<br>
+                                    cv::Vec3b s1 = median_img.at&lt;cv::Vec3b>(y,x);<br>
+                                    //緑色の摘出<br>
+                                    uchar t;<br>
+                                    if(s1[1]>=THRESHOLD && s1[2]&lt;THRESHOLD){<br>
+                                        t=255;<br>
+                                    }else{<br>
+                                        t=0;<br>
+                                    }<br>
+                                    result_img.at&lt;uchar>(y,x)= t;<br>
+                                    //赤色の摘出<br>
+                                    uchar u;<br>
+                                    if(s1[2]>=THRESHOLD && s1[1]&lt;THRESHOLD2){<br>
+                                        u=255;<br>
+                                    }else{<br>
+                                        u=0;<br>
+                                    }<br>
+                                    sub_img.at&lt;uchar>(y,x)= u;<br>
+                                }<br>
+                            }<br>
+                            //画像の出力<br>
+                            cv::imshow(WINDOW_NAME_INPUT,src_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT1,result_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT2,sub_img);<br>
+                            cv::waitKey();<br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                    </p>
+                </ul>
+            </ul>
+            <ul class="ul2">
+                <ul>
+                    <h3>チャレンジ９</h3>
+                    <p class="scloor2">
+                        #include &lt;iostream><br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //ファイル<br>
+                        #define FILE_NAME "sample.jpg"<br>
+                        #define FILE_NAME1 "sample_rotate.jpg"<br>
+                        //ウィンドウ名<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        #define WINDOW_NAME_OUTPUT1 "output1"<br>
+                        <br>
+                        //二値化しきい値<br>
+                        #define BIN_TH (100)<br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            //1. 画像の宣言 (入力画像，グレースケール画像，二値画像，一時的な画像，出力画像)<br>
+                            cv::Mat src_img, gray_img, bin_img, tmp_img, dst_img;<br>
+                            cv::Mat src1_img, gray1_img, bin1_img, tmp1_img, dst1_img;<br>
+                            //2. 輪郭の座標リストの宣言 (New!)<br>
+                            std::vector&lt; std::vector&lt; cv::Point > > contours;<br>
+                            std::vector&lt; std::vector&lt; cv::Point > > contours1;<br>
+                            <br>
+                            //3. 画像の入力 (カラーで入力)<br>
+                            src_img = cv::imread(FILE_NAME);<br>
+                            src1_img = cv::imread(FILE_NAME1);<br>
+                            if (src_img.empty() || src1_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "File is not opened.\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            <br>
+                            //4. 入力画像を出力画像にコピー (New!)<br>
+                            dst_img=src_img.clone();<br>
+                            dst1_img=src1_img.clone();<br>
+                            //5. グレースケール化<br>
+                            cv::cvtColor(src_img,gray_img,cv::COLOR_BGR2GRAY);<br>
+                            cv::cvtColor(src1_img,gray1_img,cv::COLOR_BGR2GRAY);<br>
+                            //6. 二値化 (固定しきい値で実装．しきい値: 100)<br>
+                            cv::threshold(gray_img, bin_img, BIN_TH, 255, cv::THRESH_BINARY);<br>
+                            cv::threshold(gray1_img, bin1_img, BIN_TH, 255, cv::THRESH_BINARY);<br>
+                            //二値画像コピー (New!)<br>
+                            tmp_img=bin_img.clone();<br>
+                            tmp1_img=bin1_img.clone();<br>
+                            //7. 輪郭追跡 (New!)<br>
+                            cv::findContours(tmp_img, contours, cv::RETR_LIST,cv::CHAIN_APPROX_NONE);<br>
+                            cv::findContours(tmp1_img, contours1, cv::RETR_LIST,cv::CHAIN_APPROX_NONE);<br>
+                            //8. 輪郭の描画 (New!)<br>
+                            /*for(int i=0;i&lt;contours.size();i++){<br>
+                                cv::drawContours(dst_img, contours, i, CV_RGB(255,0,255),3);<br>
+                            }*/<br>
+                            //8.1輪郭数の表示<br>
+                            printf("輪郭数%d\n",(int)contours.size());<br>
+                            //8.2表示する輪郭番号の入力<br>
+                            int i,j,a=0;<br>
+                            printf("輪郭番号?(0~%d):",(int)contours.size()-1);<br>
+                            scanf("%d",&i);<br>
+                            //8.3領域特徴量の取得・表示<br>
+                            double L,S,M,T,R;<br>
+                            L=cv::arcLength(contours[i], true);<br>
+                            S=cv::contourArea(contours[i]);<br>
+                            R=(4*S*M_PI)/(L*L);<br>
+                            for(j=0;j&lt;=13;j++){<br>
+                                M=cv::arcLength(contours1[j], true);<br>
+                                T=cv::contourArea(contours1[j]);<br>
+                                if(S>100){<br>
+                                    if(((L+2)>=M) && ((L-2)&lt;=M)){//二つの画像で星には、面積、周囲長に誤差がある為、範囲ifで判断する。<br>
+                                        break;<br>
+                                    }<br>
+                                }else{<br>
+                                    //小さい白丸領域四つは、面積も周囲長も、二種類二つずつに同じになっているため、以下のifで判断する。<br>
+                                    if(L==M){<br>
+                                        if(a==1 || i&lt;=5){<br>
+                                            break;<br>
+                                        }else{<br>
+                                            a=1;<br>
+                                        }<br>
+                                    }<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            printf("周囲長：%lf %lf,面積：%lf %lf\n",L,M,S,T);<br>
+                            //8.4外接長方形の取得<br>
+                            //8.5外接長方形の描画<br>
+                            cv::drawContours(dst_img, contours, i, CV_RGB(255,0,255),-1);<br>
+                            cv::drawContours(dst1_img, contours1, j, CV_RGB(255,0,255),-1);<br>
+                            //9. 表示<br>
+                            cv::imshow(WINDOW_NAME_INPUT, src_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT, dst_img);<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT1, dst1_img);<br>
+                            cv::waitKey();<br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                        </p>
+                </ul>
+            </ul>
+            <ul class="ul3">
+                <ul>
+                    <h3>チャレンジ１０</h3>
+                    <p class="scloor2 left">
+                        #include &lt;stdio.h><br>
+                        #include &lt;iostream><br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        <br>
+                        //ファイル<br>
+                        #define FILE_NAME "challenge.jpg"<br>
+                        //ウィンドウ名<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_BINARY "binary"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        <br>
+                        //二値化閾値<br>
+                        #define BIN_TH (200)<br>
+                        <br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            //1. 画像の宣言 (入力画像，グレースケール画像，二値画像，一時的な画像，出力画像)<br>
+                            cv::Mat src_img, gray_img, bin_img, tmp_img, dst_img,dst1_img;<br>
+                            <br>
+                            //色値の設定<br>
+                            /*cv::Scalar color[]={CV_RGB(255,0,0),CV_RGB(0,0,0),CV_RGB(255,0,0)};<br>
+                            cv::Scalar color2[]={CV_RGB(255,0,255),CV_RGB(0,0,0),CV_RGB(255,0,255)};*/<br>
+                            //2. 輪郭の座標リストの宣言<br>
+                            std::vector&lt; std::vector&lt; cv::Point > > contours;<br>
+                            <br>
+                            //3. 画像の入力 (カラーで入力)<br>
+                            src_img = cv::imread(FILE_NAME);<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "File is not opened.\n");<br>
+                                return (-1);<br>
+                            }<br>
+                            <br>
+                            //4. 入力画像を結果画像にコピー<br>
+                            //dst_img = src_img.clone();<br>
+                            <br>
+                            //5. グレースケール化<br>
+                            cv::cvtColor(src_img, gray_img,cv::COLOR_BGR2GRAY);<br>
+                            <br>
+                            //6. 二値化 (固定閾値で実装．閾値: 100)<br>
+                            cv::threshold(gray_img, bin_img, BIN_TH, 255, cv::THRESH_BINARY);<br>
+                            //二値画像コピー<br>
+                            tmp_img = bin_img.clone();<br>
+                            <br>
+                            //7. 輪郭抽出<br>
+                            cv::findContours(tmp_img, contours, cv::RETR_LIST, cv::CHAIN_APPROX_NONE);<br>
+                            int a=0,i;<br>
+                            double L,S,R;<br>
+                            L=cv::arcLength(contours[i], true);<br>
+                            S=cv::contourArea(contours[i]);<br>
+                            R=(4*S*M_PI)/(L*L);<br>
+                            //8. 輪郭の描画<br>
+                            for (int i=0;i&lt;(contours.size()); i++) {<br>
+                                L=cv::arcLength(contours[i], true);<br>
+                                S=cv::contourArea(contours[i]);<br>
+                                R=(4*S*M_PI)/(L*L);<br>
+                                if(S>=50){<br>
+                                    a++;<br>
+                                }else{<br>
+                                    cv::drawContours(tmp_img, contours, i, CV_RGB(0,0,0),cv::FILLED);<br>
+                                }<br>
+                            }<br>
+                            //9. 表示<br>
+                            printf("大きさが50画素以上の白斑点の数:%d個\n",a);<br>
+                            cv::imshow(WINDOW_NAME_INPUT, src_img);<br>
+                            cv::imshow(WINDOW_NAME_BINARY, bin_img);//全白斑点表示<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT, tmp_img);//大きさが50画素以上の白斑点表示<br>
+                            cv::waitKey();<br>
+                            <br>
+                            <br>
+                            return 0;<br>
+                        }<br>
+                        </p>
+                </ul>
+            </ul><ul class="ul2">
+                <ul>
+                    <h3>チャレンジ１１</h3>
+                    <p class="scloor2">
+                        #include &lt;iostream><br>
+                        #include &lt;opencv2/opencv.hpp><br>
+                        #define FILE_NAME "fruit_image.jpg"<br>
+                        <br>
+                        //ウィンドウ名<br>
+                        #define WINDOW_NAME_INPUT "input"<br>
+                        #define WINDOW_NAME_OUTPUT "output"<br>
+                        // 0. 定数の定義<br>
+                        #define HUE_DIFF (90) //Hの変化量<br>
+                        #define SAT_DIFF (50) //Sの変化量<br>
+                        #define VAL_DIFF (50) //Vの変化量<br>
+                        #define HUE_MIN (0) // Hの最小値<br>
+                        #define HUE_MAX (180) // Hの最大値（シフト幅）<br>
+                        #define SAT_MIN (0) // Sの最小値<br>
+                        #define VAL_MIN (0) // Vの最小値<br>
+                        <br>
+                        <br>
+                        int main(int argc, const char * argv[]) {<br>
+                            // 1. 変数の宣言<br>
+                            int x, y;    //走査用<br>
+                            cv::Vec3b p; //色値(HSV)<br>
+                            int h,s,v;   //色値(各要素)<br>
+                            cv::Mat src_img, hsv_img, dst_img; //入力画像、HSV画像、出力画像<br>
+                            <br>
+                            // 2. カラー画像の入力<br>
+                            src_img = cv::imread(FILE_NAME, cv::IMREAD_COLOR);<br>
+                            if (src_img.empty()) { //入力失敗の場合<br>
+                                fprintf(stderr, "Cannot read image file: %s.\n", FILE_NAME);<br>
+                                return (-1);<br>
+                            }<br>
+                            <br>
+                            // 3. 色変換 (BGR → HSV)<br>
+                            cv::cvtColor(src_img,hsv_img,cv::COLOR_BGR2HSV);<br>
+                            <br>
+                            // 4. 画像処理<br>
+                            for (y=0; y&lt;hsv_img.rows; y++) {<br>
+                                for (x=0; x&lt;hsv_img.cols; x++) {<br>
+                                    p=hsv_img.at&lt;cv::Vec3b>(y,x);//各画素のHSV値を取得<br>
+                                    h=p[0];<br>
+                                    s=p[1];<br>
+                                    v=p[2];<br>
+                                    v-=VAL_DIFF;//明度を下げる<br>
+                                    if(v&lt;VAL_MIN){//下限を超えた場合は修正<br>
+                                        v=VAL_MIN;<br>
+                                    }<br>
+                                    s-=SAT_DIFF;//彩度を下げる<br>
+                                    if(s&lt;SAT_MIN){<br>
+                                        s=SAT_MIN;<br>
+                                    }<br>
+                                    h-=HUE_DIFF;//色相を変える（回転シフト）<br>
+                                    if(h&lt;HUE_MIN){<br>
+                                        h+=HUE_MAX;<br>
+                                    }<br>
+                                    p[0]=h;<br>
+                                    p[1]=s;<br>
+                                    p[2]=v;//変更後の値を格納<br>
+                                    hsv_img.at&lt;cv::Vec3b>(y,x) = p;<br>
+                                }<br>
+                            }<br>
+                            <br>
+                            // 5. 色変換 (HSV → BGR)<br>
+                            cv::cvtColor(hsv_img,dst_img,cv::COLOR_HSV2BGR);<br>
+                            <br>
+                            // 6. 表示<br>
+                            cv::imshow(WINDOW_NAME_INPUT , src_img); // 入力画像の表示<br>
+                            cv::imshow(WINDOW_NAME_OUTPUT, dst_img); // 出力画像の表示<br>
+                            cv::waitKey(); // キー入力待ち (止める)<br>
+                            return 0;<br>
+                        }<br>
+                        </p>
+                </ul>
+            </ul>
+        </div>
+    </section>
+    <section class="spe">
+        <div class="spe"></div>
+    </section>
+</body>
+</html>

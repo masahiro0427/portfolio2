@@ -1,0 +1,177 @@
+html{
+    max-width: 700px;
+    background-color: aquamarine;
+}
+.scloor::-webkit-scrollbar{
+    width: 10px;
+    overflow: scroll;
+    height:0px;
+}
+.scloor::-webkit-scrollbar-track {
+    background: #0000ff;
+}
+.scloor::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+.menu{
+    height: 50px;
+    width: 720px;
+    margin-left: -10px;
+    margin-top: -10px;
+    background-color:aquamarine;
+    display: flex;
+    flex-direction: row;
+}
+#menu-btn-check:checked ~ .menu::after {
+    height: 200px;
+}
+.menu2{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+h5{
+    padding: -10px;
+    margin-top: -20px;
+}
+.puro{
+    background-color: yellow;
+    margin-left: 25px;
+    margin-right: 80px;
+}
+
+h2{
+    background-color: greenyellow;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    margin-bottom: -35px;
+    position: relative;
+    z-index: 100;
+}
+.scloor{
+    padding-top: 20px;
+    padding-left: 14px;
+    padding-right: 14px;
+    height: 250px;
+    width: 650px;
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction:column;
+    background-color: yellow;
+    position: absolute;
+    z-index: 10;
+}
+.ul2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+
+    background-color: aqua;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 10000;
+    right: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 10000;
+}
+.menu-btn span:before {
+    bottom: 8px;
+    z-index: 10000;
+}
+.menu-btn span:after {
+    top: 8px;
+    z-index: 10000;
+}
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+    z-index: 10000;
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+    z-index: 10000;
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    z-index: 10000;
+}
+
+#menu-btn-check {
+    display: none;
+    z-index: 10000;
+}
+.menu-content {
+    width: 100%;
+    height: 50%;
+    position: fixed;
+    bottom: 100%;
+    left: 0;/*leftの値を変更してメニューを画面外へ*/
+    z-index: 1000;
+    background-color: aqua;
+    transition: all 0.5s;/*アニメーション設定*/
+}
+.menu-content ul li:hover{
+    background-size:auto auto;
+    background-color: aqua;
+    background-image: repeating-linear-gradient(135deg,transparent,
+    transparent 24px,
+    rgba(254,215,13,1) 24px,
+    rgba(254,215,13,1) 48px);
+    color: rgb(255, 255, 255);
+    z-index: 1000;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+    bottom: 50%;/*メニューを画面内へ*/
+    z-index: 1000;
+}
+
+.puro{
+    display: flex;
+    flex-direction: row;
+}
+
+.img{
+    width: 300px;
+    height: 200px;
+    padding: 3px;
+}
+
+.rinkh{
+    height: 300px;
+    margin-top: 50px;
+    z-index: 100;
+}
+
+.img2{
+    height: 100px;
+    width: 100px;
+}
